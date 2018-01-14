@@ -11,11 +11,11 @@ app.controller('CryptoController', function($scope, $http){
         
      }   
     
-    
+   /* 
     setInterval(function(){
       $scope.updatePrice();
     }, 10000);
-    
+    */
  
     $scope.updatePrice();
 });
