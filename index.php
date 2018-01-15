@@ -21,7 +21,7 @@
     </head>
 <body ng-app="cryptoApp">
     
-    <div class="ui top fixed menu teal">
+    <div class="ui top fixed menu blue inverted">
       <div class="header item">Cryptoapi</div>
       <div class="item"><i class="rupee icon"></i></div>
       <div class="item"><i class="euro icon"></i></div>
@@ -39,7 +39,7 @@
         
         <tbody>
             <tr>
-                <td><div class="ui ribbon label red">BTC <i class="cf cf-btc"></i></div></td>
+                <td><div class="ui ribbon label yellow">BTC <i class="cf cf-btc"></i></div></td>
                 <td>&#8377; {{price.BTC.USD | number:2}} <span>({{price.BTC.USD_ORI | currency}})</span></td>
                 <td>&#8377; {{price.BTC.EUR | number:2}} <span>({{price.BTC.EUR_ORI | number:2}} &euro;)</span></td>
                 <td>&#8377; {{price.BTC.INR | number:2}} <span>({{price.BTC.EUR < price.BTC.USD ? (((price.BTC.INR-price.BTC.EUR)/price.BTC.INR)*100) : (((price.BTC.INR-price.BTC.USD)/price.BTC.USD)*100) | number:2}}%)</span></td>
