@@ -40,27 +40,27 @@
         <tbody>
             <tr>
                 <td><div class="ui ribbon label red">BTC <i class="cf cf-btc"></i></div></td>
-                <td>{{price.BTC.USD | number:2}} <span>({{price.BTC.USD_ORI | currency}})</span></td>
-                <td>{{price.BTC.EUR | number:2}} <span>({{price.BTC.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>{{price.BTC.INR | number:2}} </td>
+                <td>&#8377; {{price.BTC.USD | number:2}} <span>({{price.BTC.USD_ORI | currency}})</span></td>
+                <td>&#8377; {{price.BTC.EUR | number:2}} <span>({{price.BTC.EUR_ORI | number:2}} &euro;)</span></td>
+                <td>&#8377; {{price.BTC.INR | number:2}} </td>
             </tr>
             <tr>
                 <td><div class="ui ribbon label orange">BCH <i class="cf cf-btc-alt"></i></div></td>
-                <td>{{price.BCH.USD | number:2}} <span>({{price.BCH.USD_ORI | currency}})</span></td>
-                <td>{{price.BCH.EUR | number:2}} <span>({{price.BCH.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>{{price.BCH.INR | number:2}}</td>
+                <td>&#8377; {{price.BCH.USD | number:2}} <span>({{price.BCH.USD_ORI | currency}})</span></td>
+                <td>&#8377; {{price.BCH.EUR | number:2}} <span>({{price.BCH.EUR_ORI | number:2}} &euro;)</span></td>
+                <td>&#8377; {{price.BCH.INR | number:2}}</td>
             </tr> 
             <tr>
                 <td><div class="ui ribbon label blue">XRP <i class="cf cf-xrp"></i></div></td>
-                <td>{{price.XRP.USD | number:2}} <span>({{price.XRP.USD_ORI | currency}})</span></td>
-                <td>{{price.XRP.EUR | number:2}} <span>({{price.XRP.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>{{price.XRP.INR | number:2}} <span>({{(((price.XRP.INR-price.XRP.EUR)/price.XRP.INR)*100) | number:2}}%)</span></td>
+                <td>&#8377; {{price.XRP.USD | number:2}} <span>({{price.XRP.USD_ORI | currency}})</span></td>
+                <td>&#8377; {{price.XRP.EUR | number:2}} <span>({{price.XRP.EUR_ORI | number:2}} &euro;)</span></td>
+                <td>&#8377; {{price.XRP.INR | number:2}} <span>({{(((price.XRP.INR-price.XRP.EUR)/price.XRP.INR)*100) | number:2}}%)</span></td>
             </tr>
             <tr>
                 <td><div class="ui ribbon label violet">ETH <i class="cf cf-eth"></i></div></td>
-                <td>{{price.ETH.USD | number:2}} <span>({{price.ETH.USD_ORI | currency}})</span></td>
-                <td>{{price.ETH.EUR | number:2}} <span>({{price.ETH.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>{{price.ETH.INR | number:2}}</td>
+                <td>&#8377; {{price.ETH.USD | number:2}} <span>({{price.ETH.USD_ORI | currency}})</span></td>
+                <td>&#8377; {{price.ETH.EUR | number:2}} <span>({{price.ETH.EUR_ORI | number:2}} &euro;)</span></td>
+                <td>&#8377; {{price.ETH.INR | number:2}}</td>
             </tr>  
         </tbody>
       </table>      
