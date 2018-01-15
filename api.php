@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 
 $euCr = 83;
-$usCr = 67;
+$usCr = 72;
 
 $out = array();
 
