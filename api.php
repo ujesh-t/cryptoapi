@@ -17,6 +17,8 @@ $clientK = new Client([
 $responseK = $clientK->request('GET', '/api/ticker');
 $koinxJson = json_decode($responseK->getBody());
 
+print_r($koinxJson);
+
 $client = new Client([
     // Base URI is used with relative requests
     'base_uri' => 'https://cex.io/',
