@@ -17,7 +17,7 @@ $clientK = new Client([
 $responseK = $clientK->request('GET', '/api/ticker');
 $koinxJson = json_decode($responseK->getBody());
 
-print_r($koinxJson);
+//print_r($koinxJson);
 
 $client = new Client([
     // Base URI is used with relative requests
@@ -39,9 +39,11 @@ foreach($cexJson->data as $p){
         $askPrice = $askPrice * $euCr;
     }
     $out[$pairArray[0]][$pairArray[1]]=$askPrice;
-    //print_r($koinxJson->prices->$pairArray[0]);
+    
+    print_r($koinxJson->prices->$pairArray[0]);
     if(property_exists($koinxJson->prices,$pairArray[0]))
         $out[$pairArray[0]]['INR']=$koinxJson->prices->$pairArray[0];
+    
 }
 
 
