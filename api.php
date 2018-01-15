@@ -40,7 +40,7 @@ foreach($cexJson->data as $p){
     }
     $out[$pairArray[0]][$pairArray[1]]=$askPrice;
     $coin = $pairArray[0];
-    print_r($koinxJson->prices->$coin);
+    //print_r($koinxJson->prices->$coin);
     if(property_exists($koinxJson->prices,$coin))
         $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;
     
