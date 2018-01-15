@@ -39,6 +39,8 @@ foreach($cexJson->data as $p){
         $askPrice = $askPrice * $euCr;
     }
     $out[$pairArray[0]][$pairArray[1]]=$askPrice;
+    $out[$pairArray[0]][$pairArray[1].'_ORI']=$p->ask;
+    
     $coin = $pairArray[0];
     //print_r($koinxJson->prices->$coin);
     if(property_exists($koinxJson->prices,$coin))

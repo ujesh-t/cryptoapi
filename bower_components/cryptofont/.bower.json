@@ -1,0 +1,44 @@
+{
+  "name": "cryptofont",
+  "description": "CryptoFont - A sleek webfont for your favourite cryptocurrencies",
+  "version": "0.1.1",
+  "keywords": [
+    "crypto",
+    "cryptocurrency",
+    "cryptocoin",
+    "webfont",
+    "font",
+    "icon"
+  ],
+  "homepage": "https://alexanderpoellmann.com/cryptofont",
+  "dependencies": {},
+  "devDependencies": {},
+  "license": [
+    "OFL-1.1",
+    "MIT",
+    "CC-BY-3.0"
+  ],
+  "main": [
+    "scss/cryptofont.scss"
+  ],
+  "ignore": [
+    "*/.*",
+    "*.png",
+    "*.json",
+    "src",
+    "*.yml",
+    "Gemfile",
+    "Gemfile.lock",
+    "*.md"
+  ],
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.1",
+    "commit": "b45dcadc2bd612c14f6b3963a9c2284b5c9918df"
+  },
+  "_source": "https://github.com/AlexanderPoellmann/CryptoFont.git",
+  "_target": "^0.1.1",
+  "_originalSource": "cryptofont",
+  "_direct": true
+}
