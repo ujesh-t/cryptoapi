@@ -39,10 +39,10 @@ foreach($cexJson->data as $p){
         $askPrice = $askPrice * $euCr;
     }
     $out[$pairArray[0]][$pairArray[1]]=$askPrice;
-    
-    print_r($koinxJson->prices[$pairArray[0]]);
-    if(property_exists($koinxJson->prices,$pairArray[0]))
-        $out[$pairArray[0]]['INR']=$koinxJson->prices->$pairArray[0];
+    $coin = $pairArray[0];
+    print_r($koinxJson->prices->$coin);
+    if(property_exists($koinxJson->prices,$coin))
+        $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;
     
 }
 
