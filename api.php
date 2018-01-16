@@ -19,6 +19,7 @@ $koinxJson = json_decode($responseK->getBody());
 
 //print_r($koinxJson);
 
+
 $client = new Client([
     // Base URI is used with relative requests
     'base_uri' => 'https://cex.io/',
@@ -45,6 +46,8 @@ foreach($cexJson->data as $p){
     //print_r($koinxJson->prices->$coin);
     if(property_exists($koinxJson->prices,$coin))
         $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;    
+    
+
 }
 
 $clientCd = new Client([
@@ -66,6 +69,16 @@ foreach($cdJson as $cd) {
     }
         
 }
+
+
+$clientBbns = new Client([
+    'base_uri' => 'https://bitbns.com/',
+    'timeout' => 5.0
+]);
+$responseBbns = $clientBbns->request('GET', '/order/getTickerAll');
+$bbnsJson = json_decode($responseBbns->getBody());
+$out['BTC']['BBNS'] = $bbnsJson[0]->BTC->lastTradePrice;
+$out['XRP']['BBNS'] = $bbnsJson[1]->XRP->lastTradePrice;
 
 
 echo json_encode($out);
