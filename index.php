@@ -40,27 +40,31 @@
         <tbody>
             <tr>
                 <td><div class="ui ribbon label yellow">BTC <i class="cf cf-btc"></i></div></td>
-                <td>&#8377; {{price.BTC.USD | number:2}} <span>({{price.BTC.USD_ORI | currency}})</span></td>
-                <td>&#8377; {{price.BTC.EUR | number:2}} <span>({{price.BTC.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>&#8377; {{price.BTC.INR | number:2}} <span>({{price.BTC.EUR < price.BTC.USD ? (((price.BTC.INR-price.BTC.EUR)/price.BTC.INR)*100) : (((price.BTC.INR-price.BTC.USD)/price.BTC.USD)*100) | number:2}}%)</span></td>
+                <td>&#8377; {{price.BTC.USD | number:2}} <span>({{price.BTC.USD_ORI | currency}})</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.BTC.EUR | number:2}} <span>({{price.BTC.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.BTC.INR | number:2}} <span>({{price.BTC.EUR < price.BTC.USD ? (((price.BTC.INR-price.BTC.EUR)/price.BTC.INR)*100) : (((price.BTC.INR-price.BTC.USD)/price.BTC.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
+                <td>&#8377; {{price.BTC.CD | number:2}} <span>({{price.BTC.EUR < price.BTC.USD ? (((price.BTC.CD-price.BTC.EUR)/price.BTC.CD)*100) : (((price.BTC.CD-price.BTC.USD)/price.BTC.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
             </tr>
             <tr>
                 <td><div class="ui ribbon label orange">BCH <i class="cf cf-btc-alt"></i></div></td>
-                <td>&#8377; {{price.BCH.USD | number:2}} <span>({{price.BCH.USD_ORI | currency}})</span></td>
-                <td>&#8377; {{price.BCH.EUR | number:2}} <span>({{price.BCH.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>&#8377; {{price.BCH.INR | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.INR-price.BCH.EUR)/price.BCH.INR)*100) : (((price.BCH.INR-price.BCH.USD)/price.BCH.USD)*100) | number:2}}%)</span></td>
+                <td>&#8377; {{price.BCH.USD | number:2}} <span>({{price.BCH.USD_ORI | currency}})</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.BCH.EUR | number:2}} <span>({{price.BCH.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.BCH.INR | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.INR-price.BCH.EUR)/price.BCH.INR)*100) : (((price.BCH.INR-price.BCH.USD)/price.BCH.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
+                <td>&#8377; {{price.BCH.CD | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.CD-price.BCH.EUR)/price.BCH.CD)*100) : (((price.BCH.CD-price.BCH.USD)/price.BCH.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
             </tr> 
             <tr>
                 <td><div class="ui ribbon label blue">XRP <i class="cf cf-xrp"></i></div></td>
-                <td>&#8377; {{price.XRP.USD | number:2}} <span>({{price.XRP.USD_ORI | currency}})</span></td>
-                <td>&#8377; {{price.XRP.EUR | number:2}} <span>({{price.XRP.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>&#8377; {{price.XRP.INR | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.INR-price.XRP.EUR)/price.XRP.INR)*100) : (((price.XRP.INR-price.XRP.USD)/price.XRP.USD)*100) | number:2}}%)</span></td>
+                <td>&#8377; {{price.XRP.USD | number:2}} <span>({{price.XRP.USD_ORI | currency}})</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.XRP.EUR | number:2}} <span>({{price.XRP.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.XRP.INR | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.INR-price.XRP.EUR)/price.XRP.INR)*100) : (((price.XRP.INR-price.XRP.USD)/price.XRP.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
+                <td>&#8377; {{price.XRP.CD | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.CD-price.XRP.EUR)/price.XRP.CD)*100) : (((price.XRP.CD-price.XRP.USD)/price.XRP.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
             </tr>
             <tr>
                 <td><div class="ui ribbon label violet">ETH <i class="cf cf-eth"></i></div></td>
-                <td>&#8377; {{price.ETH.USD | number:2}} <span>({{price.ETH.USD_ORI | currency}})</span></td>
-                <td>&#8377; {{price.ETH.EUR | number:2}} <span>({{price.ETH.EUR_ORI | number:2}} &euro;)</span></td>
-                <td>&#8377; {{price.ETH.INR | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.INR-price.ETH.EUR)/price.ETH.INR)*100) : (((price.ETH.INR-price.ETH.USD)/price.ETH.USD)*100) | number:2}}%)</span></td>
+                <td>&#8377; {{price.ETH.USD | number:2}} <span>({{price.ETH.USD_ORI | currency}})</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.ETH.EUR | number:2}} <span>({{price.ETH.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.ETH.INR | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.INR-price.ETH.EUR)/price.ETH.INR)*100) : (((price.ETH.INR-price.ETH.USD)/price.ETH.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
+                <td>&#8377; {{price.ETH.CD | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.CD-price.ETH.EUR)/price.ETH.CD)*100) : (((price.ETH.CD-price.ETH.USD)/price.ETH.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
             </tr>  
         </tbody>
       </table>      

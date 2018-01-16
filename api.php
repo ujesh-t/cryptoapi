@@ -44,13 +44,28 @@ foreach($cexJson->data as $p){
     $coin = $pairArray[0];
     //print_r($koinxJson->prices->$coin);
     if(property_exists($koinxJson->prices,$coin))
-        $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;
-    
+        $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;    
 }
 
+$clientCd = new Client([
+    'base_uri' => 'https://coindelta.com/',
+    'timeout' => 5.0
+]);
+$response = $clientCd->request('GET', '/api/v1/public/getticker/');
+$cdJson = json_decode($response->getBody());
 
-
-
+foreach($cdJson as $cd) {
+    
+    $coinCd = $cd->MarketName;
+    $coinCda = explode('-', $coinCd);
+    $coinCd = strtoupper($coinCda[0]);
+    if($coinCda[1] == 'inr') {
+       // if(property_exists($out,$coinCd)) {
+            $out[$coinCd]['CD'] = $cd->Last;
+       // }
+    }
+        
+}
 
 
 echo json_encode($out);
