@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/table.min.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/label.min.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/grid.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/button.min.css">
+    
     
     <link rel="stylesheet" type="text/css" href="bower_components/cryptofont/css/cryptofont.min.css">
         
@@ -71,7 +73,8 @@
                 <td></td>
             </tr>  
         </tbody>
-      </table>      
+      </table>    
+            <button class="ui primary button tiny" ng-click="updatePrice()">Refresh  <i class="icon refresh"></i></button>
         </div>
     </div>
      
