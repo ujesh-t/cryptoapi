@@ -74,7 +74,7 @@
             </tr>  
         </tbody>
       </table>    
-            <button class="ui primary button tiny" ng-click="updatePrice()">Refresh  <i class="icon refresh"></i></button>
+            <button class="ui primary button tiny" ng-disabled="btnDisabled" ng-click="updatePrice()">Refresh  <i class="icon refresh"></i></button>
         </div>
     </div>
      
