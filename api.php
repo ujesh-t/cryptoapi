@@ -80,5 +80,15 @@ $bbnsJson = json_decode($responseBbns->getBody());
 $out['BTC']['BBNS'] = $bbnsJson[0]->BTC->lastTradePrice;
 $out['XRP']['BBNS'] = $bbnsJson[1]->XRP->lastTradePrice;
 
+$clientZeb = new Client([
+    'base_uri' => 'https://live.zebapi.com/',
+    'timeout' => 5.0
+]);
+$responseZeb = $clientZeb->request('GET', '/api/v1/ticker?currencyCode=INR');
+$zebJson = json_decode($responseZeb->getBody());
+$out['BTC']['ZEBP'] = $zebJson->market;
+
+
+
 
 echo json_encode($out);
