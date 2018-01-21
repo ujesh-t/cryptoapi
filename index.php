@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/label.min.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/grid.min.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/components/button.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/message.min.css">
     
     
     <link rel="stylesheet" type="text/css" href="bower_components/cryptofont/css/cryptofont.min.css">
@@ -34,6 +35,16 @@
     <div class="container grid" style="margin-top:90px;" ng-controller="CryptoController">
     <div class="row">
         <div class="sixteen wide column">
+        
+            <div class="ui warning message">
+              <i class="close icon"></i>
+              <div class="header">
+                Notification!
+              </div>
+              CoinDelta Price Ticker API's are having issues, please note that the prices displayed may be incorrect.
+            </div>
+            
+            
          <table class="ui celled table">
         <thead style="display:none;">
           <tr><th>Coin</th><th>USD</th><th>EURO</th><th>INR</th></tr>  
