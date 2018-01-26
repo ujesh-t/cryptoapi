@@ -14,7 +14,7 @@
     
     
     <link rel="stylesheet" type="text/css" href="bower_components/cryptofont/css/cryptofont.min.css">
-    <link rel="icon" href="favicon.ico" type="image/gif">  
+    <link rel="icon" href="favicon.ico" type="image/x-icon">  
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
