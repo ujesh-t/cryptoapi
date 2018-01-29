@@ -85,7 +85,7 @@
                 <td>&#8377; {{price.ETH.EUR | number:2}} <span>({{price.ETH.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
                 <td>&#8377; {{price.ETH.INR | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.INR-price.ETH.EUR)/price.ETH.INR)*100) : (((price.ETH.INR-price.ETH.USD)/price.ETH.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
                 <td>&#8377; {{price.ETH.CD | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.CD-price.ETH.EUR)/price.ETH.CD)*100) : (((price.ETH.CD-price.ETH.USD)/price.ETH.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
-                <td></td>
+                <td>&#8377; {{price.ETH.BBNS | number:2}} <span>({{price.ETH.EUR < price.ETH.USD ? (((price.ETH.BBNS-price.ETH.EUR)/price.ETH.BBNS)*100) : (((price.ETH.BBNS-price.ETH.USD)/price.ETH.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
                 <td></td>
             </tr>
         </tbody>
