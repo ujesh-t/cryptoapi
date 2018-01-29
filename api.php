@@ -20,10 +20,15 @@ $euCr = $priceList->rates->EUR;
 $usCr = $priceList->rates->USD;
     
 $euCr = 1/$euCr;
-$euCr = ((3.64*$euCr)/100)+$euCr;
+$out['EUR'] = $euCr;
+$euCr = ((7.25*$euCr)/100)+$euCr;
 
 $usCr = 1/$usCr;
-$usCr = ((3.64*$usCr)/100)+$usCr;
+$out['USD'] = $usCr;
+$usCr = ((7.25*$usCr)/100)+$usCr;
+
+$out['USD_TAXED'] = $usCr;
+$out['EUR_TAXED'] = $euCr;
 
 $clientK = new Client([
     // Base URI is used with relative requests

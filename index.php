@@ -37,14 +37,10 @@
     <div class="row">
         <div class="sixteen wide column">
         
-            <div class="ui warning message">
-              <i class="close icon"></i>
-              <div class="header">
-                Notification!
-              </div>
-              CoinDelta Price Ticker API's are having issues, please note that the prices displayed may be incorrect.
-            </div>
-            
+            <div>
+                <span><a class="ui red tag label"><i class="dollar icon"></i>= &#8377; {{price.USD | number:2}} </a></span>
+                <span><a class="ui teal tag label"><i class="euro icon"></i>= &#8377; {{price.EUR | number:2}} </a></span>
+            </div>                   
             
          <table class="ui celled table">
         <thead style="display:none;">
