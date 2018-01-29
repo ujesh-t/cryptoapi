@@ -8,6 +8,23 @@ $usCr = 72;
 
 $out = array();
 
+$priceApi = new Client([
+    'base_uri' => 'https://api.fixer.io/',
+    'timeout'  => 5.0,
+]);
+
+$priceApiR = $priceApi->request('GET','/latest?base=INR');
+$priceList = json_decode($priceApiR->getBody());
+
+$euCr = $priceList->rates->EUR;
+$usCr = $priceList->rates->USD;
+    
+$euCr = 1/$euCr;
+$euCr = ((3.64*$euCr)/100)+$euCr;
+
+$usCr = 1/$usCr;
+$usCr = ((3.64*$usCr)/100)+$usCr;
+
 $clientK = new Client([
     // Base URI is used with relative requests
     'base_uri' => 'https://koinex.in/',
