@@ -90,7 +90,7 @@
                 <td>&#8377; {{price.XLM.EUR | number:2}} <span>({{price.XLM.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
                 <td></td>
                 <td></td>
-                <td>&#8377; {{price.XLM.BBNS | number:2}} <span>({{price.XLM.EUR < price.ETH.USD ? (((price.XLM.BBNS-price.XLM.EUR)/price.XLM.BBNS)*100) : (((price.XLM.BBNS-price.XLM.USD)/price.XLM.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
+                <td>&#8377; {{price.XLM.BBNS | number:2}} <span>({{price.XLM.EUR < price.XLM.USD ? (((price.XLM.BBNS-price.XLM.EUR)/price.XLM.BBNS)*100) : (((price.XLM.BBNS-price.XLM.USD)/price.XLM.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
                 <!--td></td-->
             </tr>
         </tbody>
