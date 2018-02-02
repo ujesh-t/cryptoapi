@@ -30,6 +30,7 @@ $usCr = ((7.25*$usCr)/100)+$usCr;
 $out['USD_TAXED'] = $usCr;
 $out['EUR_TAXED'] = $euCr;
 
+/*
 $clientK = new Client([
     // Base URI is used with relative requests
     'base_uri' => 'https://koinex.in/',
@@ -38,7 +39,7 @@ $clientK = new Client([
 ]);
 $responseK = $clientK->request('GET', '/api/ticker');
 $koinxJson = json_decode($responseK->getBody());
-
+*/
 //print_r($koinxJson);
 
 
@@ -66,8 +67,8 @@ foreach($cexJson->data as $p){
     
     $coin = $pairArray[0];
     //print_r($koinxJson->prices->$coin);
-    if(property_exists($koinxJson->prices,$coin))
-        $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;    
+    //if(property_exists($koinxJson->prices,$coin))
+    //    $out[$pairArray[0]]['INR']=$koinxJson->prices->$coin;    
     
 
 }
