@@ -6,12 +6,20 @@ app.controller('CryptoController', function($scope, $http){
      $scope.updatePrice = function(){
         
        $scope.btnDisabled = true;     
-         
-       console.log('>>>');
-       $http.get('api.php').then(function(res){
+        
+    console.log($scope.reverse);
+       if($scope.reverse) {
+           $http.get('api.php?reverse=true').then(function(res){
            $scope.price = res.data;
            $scope.btnDisabled = false;     
-       });
+       })     
+           
+       } else   {
+           $http.get('api.php').then(function(res){
+               $scope.price = res.data;
+               $scope.btnDisabled = false;     
+           });
+       }
         
      }   
     

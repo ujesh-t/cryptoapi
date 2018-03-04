@@ -13,6 +13,12 @@ $priceApi = new Client([
     'timeout'  => 5.0,
 ]);
 
+$reverse = false;
+
+if(isset($_GET['reverse'])){
+    $reverse = $_GET['reverse'];
+}
+
 $priceApiR = $priceApi->request('GET','/latest?base=INR');
 $priceList = json_decode($priceApiR->getBody());
 
@@ -21,11 +27,15 @@ $usCr = $priceList->rates->USD;
     
 $euCr = 1/$euCr;
 $out['EUR'] = $euCr;
-$euCr = ((7.25*$euCr)/100)+$euCr;
+
+if(!$reverse)
+    $euCr = ((7.25*$euCr)/100)+$euCr;
 
 $usCr = 1/$usCr;
 $out['USD'] = $usCr;
-$usCr = ((7.25*$usCr)/100)+$usCr;
+
+if(!$reverse)
+    $usCr = ((7.25*$usCr)/100)+$usCr;
 
 $out['USD_TAXED'] = $usCr;
 $out['EUR_TAXED'] = $euCr;

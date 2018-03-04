@@ -40,6 +40,7 @@
             <div>
                 <span><a class="ui red tag label"><i class="dollar icon"></i>= &#8377; {{price.USD | number:2}} </a></span>
                 <span><a class="ui teal tag label"><i class="euro icon"></i>= &#8377; {{price.EUR | number:2}} </a></span>
+                <label> <i class="map signs icon"></i> <input type="checkbox" ng-model="reverse"/></label>
             </div>                   
             
          <table class="ui celled table">
