@@ -64,7 +64,7 @@
                 <td>&#8377; {{price.BCH.EUR | number:2}} <span>({{price.BCH.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
                 <td>&#8377; {{price.BCH.INR | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.INR-price.BCH.EUR)/price.BCH.INR)*100) : (((price.BCH.INR-price.BCH.USD)/price.BCH.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
                 <td>&#8377; {{price.BCH.CD | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.CD-price.BCH.EUR)/price.BCH.CD)*100) : (((price.BCH.CD-price.BCH.USD)/price.BCH.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
-                <td></td>
+                <td>&#8377; {{price.BCH.BBNS | number:2}} <span>({{price.BCH.EUR < price.BCH.USD ? (((price.BCH.BBNS-price.BCH.EUR)/price.BCH.BBNS)*100) : (((price.BCH.BBNS-price.BCH.USD)/price.BCH.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
                 <!--td></td-->
             </tr> 
             <tr>
@@ -74,7 +74,6 @@
                 <td>&#8377; {{price.XRP.INR | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.INR-price.XRP.EUR)/price.XRP.INR)*100) : (((price.XRP.INR-price.XRP.USD)/price.XRP.INR)*100) | number:2}}%)</span> <i class="ui mini label blue horizontal">KOINEX</i></td>
                 <td>&#8377; {{price.XRP.CD | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.CD-price.XRP.EUR)/price.XRP.CD)*100) : (((price.XRP.CD-price.XRP.USD)/price.XRP.CD)*100) | number:2}}%)</span> <i class="ui mini label green horizontal">COINDELTA</i></td>
                 <td>&#8377; {{price.XRP.BBNS | number:2}} <span>({{price.XRP.EUR < price.XRP.USD ? (((price.XRP.BBNS-price.XRP.EUR)/price.XRP.BBNS)*100) : (((price.XRP.BBNS-price.XRP.USD)/price.XRP.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
-                <td></td>
             </tr>
             <tr>
                 <td><div class="ui ribbon label violet">ETH <i class="cf cf-eth"></i></div></td>
