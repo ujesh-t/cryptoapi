@@ -73,9 +73,11 @@ foreach($bbnsJson as $bit) {
                     }
                 }
             }            
+            $coinData = array();
+            $coinData[$coin]['CEX'] = $cexData;
+            $coinData[$coin]['BINANCE'] = $binanceData;
             
-            $output[$coin]['CEX'] = $cexData;
-            $output[$coin]['BINANCE'] = $binanceData;
+            array_push($output, $coinData);
         }
     } 
 }
