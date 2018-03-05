@@ -54,10 +54,10 @@ foreach($bbnsJson as $bit) {
             $cexPairs = findPairsCex($coin, $qty-$dnf, $cexJson);
             foreach($cexPairs as $key => $value) {
                 foreach($bbnsJson as $b) {
-                    if(property_exists($b, $key)) {
-                        $sellPrice = $value * $b->$key->sellPrice;
+                    if(property_exists($b, $key)) {                      
+                        $sellPrice = $value['QTY'] * $b->$key->sellPrice;
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $cexData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $cexData[$key] = array('INVESTED'=> $investment , 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
                     }
                 }
             }
@@ -67,9 +67,9 @@ foreach($bbnsJson as $bit) {
             foreach($binancePair as $key => $value) {
                 foreach($bbnsJson as $b) {
                     if(property_exists($b, $key)) {
-                        $sellPrice = $value * $b->$key->sellPrice;
+                        $sellPrice = $value['QTY'] * $b->$key->sellPrice;
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
                     }
                 }
             }            
@@ -103,7 +103,8 @@ function findPairsCex($coin, $qty, $cexJson) {
         $c = explode(":",$data->pair)[0];
         $ask = $data->ask;
         $qtyBougth = ($btcAmt - (($btcAmt * $tradeFeeCex)/100))/$ask;
-        $pairs[$c]=$qtyBougth - $dnf;
+        $pairs[$c]['QTY']=$qtyBougth - $dnf;
+        $pairs[$c]['PRICE_BTC'] = $ask;
     }
     return $pairs;
 }
@@ -132,7 +133,8 @@ function findPairsBinance($coin, $qty, $binanceJson){
                 if($bin->symbol == $k."BTC"){
                     $ask = $bin->askPrice;
                     $qtyBougth = ($btcAmt - (($btcAmt * $tradeFeeBin)/100))/$ask;
-                    $pairs[$k]=$qtyBougth - $dnf;
+                    $pairs[$k]['QTY']=$qtyBougth - $dnf;
+                    $pairs[$k]['PRICE_BTC']=$ask;
                     break;
                 }
             }
