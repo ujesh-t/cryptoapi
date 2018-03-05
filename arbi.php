@@ -14,7 +14,15 @@ $clientCex = new Client([
     'timeout' => 5.0    
 ]);
 
+$clientBinance = new Client([
+    'base_uri' => 'https://api.binance.com/',
+    'timeout' => 5.0    
+]);
+
+
+
 $coinsToWatch = array('XRP','XLM','ETH', 'DASH');
+
 $investment = 10000;
 $dnf = 0.002;
 $tradeFeeBns = 0.25;
@@ -27,18 +35,23 @@ $cexJson = json_decode($response->getBody());
 $responseBbns = $clientBbns->request('GET', '/order/getTickerAll');
 $bbnsJson = json_decode($responseBbns->getBody());
 
+$responseBinance = $clientBinance->request('GET', '/api/v3/ticker/bookTicker');
+$binanceJson = json_decode($responseBinance->getBody());
+
 $output = array();
 
 foreach($bbnsJson as $bit) {
     foreach($coinsToWatch as $coin) {
         
         $cexData = array();
+        $binanceData = array();
         
         if(property_exists($bit,$coin)) {
             $amt = ($investment - ($investment * $tradeFeeBns)/100);
             $qty = ($amt/$bit->$coin->buyPrice);
-            $cexPairs = findPairsCex($coin, $qty-$dnf, $cexJson);
             
+            // cex
+            $cexPairs = findPairsCex($coin, $qty-$dnf, $cexJson);
             foreach($cexPairs as $key => $value) {
                 foreach($bbnsJson as $b) {
                     if(property_exists($b, $key)) {
@@ -48,7 +61,21 @@ foreach($bbnsJson as $bit) {
                     }
                 }
             }
-            $output[$coin] = $cexData;
+            
+            // binance
+            $binancePair = findPairsBinance($coin, $qty-$dnf, $binanceJson);
+            foreach($binancePair as $key => $value) {
+                foreach($bbnsJson as $b) {
+                    if(property_exists($b, $key)) {
+                        $sellPrice = $value * $b->$key->sellPrice;
+                        $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
+                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                    }
+                }
+            }            
+            
+            $output[$coin]['CEX'] = $cexData;
+            $output[$coin]['BINANCE'] = $binanceData;
         }
     } 
 }
@@ -80,3 +107,40 @@ function findPairsCex($coin, $qty, $cexJson) {
     }
     return $pairs;
 }
+
+function findPairsBinance($coin, $qty, $binanceJson){
+    
+    $tradeFeeBin = 0.16;
+    $btcAmt = 0;
+    $dnf = 0.002;
+    global $bbnsJson;
+    
+    
+    foreach($binanceJson as $bin){
+        if($bin->symbol == "$coin"."BTC"){
+            $bidPrice = $bin->bidPrice;
+            $soldAmount = $bidPrice * $qty;
+            $btcAmt = $soldAmount - (($soldAmount * $tradeFeeBin)/100);
+            break;            
+        }
+    }
+    
+    foreach($bbnsJson as $bit) {
+        $t = get_object_vars($bit);
+        foreach($t as $k => $v) {
+            foreach($binanceJson as $bin){
+                if($bin->symbol == $k."BTC"){
+                    $ask = $bin->askPrice;
+                    $qtyBougth = ($btcAmt - (($btcAmt * $tradeFeeBin)/100))/$ask;
+                    $pairs[$k]=$qtyBougth - $dnf;
+                    break;
+                }
+            }
+        }
+    } 
+    
+    return $pairs;
+}
+
+
+
