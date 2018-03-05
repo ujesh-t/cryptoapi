@@ -114,6 +114,7 @@ $out['BTC']['BBNS'] = $bbnsJson[0]->BTC->lastTradePrice;
 $out['XRP']['BBNS'] = $bbnsJson[1]->XRP->lastTradePrice;
 $out['ETH']['BBNS'] = $bbnsJson[4]->ETH->lastTradePrice;
 $out['XLM']['BBNS'] = $bbnsJson[5]->XLM->lastTradePrice;
+$out['DASH']['BBNS'] = $bbnsJson[10]->DASH->lastTradePrice;
 
 $clientZeb = new Client([
     'base_uri' => 'https://live.zebapi.com/',
