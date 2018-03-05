@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/menu.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/icon.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/table.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/label.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/grid.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/button.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/message.min.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/components/card.min.css">
+    
+    
+    <link rel="stylesheet" type="text/css" href="bower_components/cryptofont/css/cryptofont.min.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">  
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>  
+    <script src="js/app.js"></script>
+    <title>Cryptoapi</title>
+        
+    </head>
+<body ng-app="cryptoApp">
+    
+    <div class="ui top fixed menu blue inverted">
+      <div class="header item">Cryptoapi</div>
+      <div class="item"><i class="rupee icon"></i></div>
+      <div class="item"><i class="euro icon"></i></div>
+      <div class="item"><i class="dollar icon"></i></div>
+
+    </div>
+    
+    <div class="container grid" style="margin-top:90px;" ng-controller="ArbitrageController">
+    <div class="row">
+        <div class="sixteen wide column">
+            <div class="ui cards">
+                <div class="fluid card" ng-repeat="coin in coinList">
+                    <div class="content">
+                       <i class="right floated mini ui image cf cf-{{coin.currency|lowercase}}"></i>
+                      <div class="header">
+                        {{coin.currency}}
+                      </div>
+                    </div>
+                    <div class="content">
+                      <div class="meta">
+                        {{coin.exchange | lowercase}}
+                      </div>
+                    <div class="description">
+                        Buy {{coin.coin}} from {{coin.exchange}} at <a>{{coin.boughtAt}} BTC</a> and sell in Bitbns for <a>&#8377; {{coin.soldAt}}</a>
+                    </div>
+                    </div>
+                    <div class="extra content">
+                        <i class="check icon"></i>{{coin.roi | number:2}} %
+                        <div class="right floated">{{coin.coin}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </body>
+</html>
