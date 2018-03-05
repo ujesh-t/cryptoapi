@@ -94,6 +94,15 @@
                 <td>&#8377; {{price.XLM.BBNS | number:2}} <span>({{price.XLM.EUR < price.XLM.USD ? (((price.XLM.BBNS-price.XLM.EUR)/price.XLM.BBNS)*100) : (((price.XLM.BBNS-price.XLM.USD)/price.XLM.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
                 <!--td></td-->
             </tr>
+            <tr>
+                <td><div class="ui ribbon label blue">DASH <i class="cf cf-dash"></i></div></td>
+                <td>&#8377; {{price.DASH.USD | number:2}} <span>({{price.DASH.USD_ORI | currency}})</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td>&#8377; {{price.DASH.EUR | number:2}} <span>({{price.DASH.EUR_ORI | number:2}} &euro;)</span> <i class="ui mini label teal horizontal">CEX</i></td>
+                <td></td>
+                <td></td>
+                <td>&#8377; {{price.DASH.BBNS | number:2}} <span>({{price.DASH.EUR < price.XLM.USD ? (((price.DASH.BBNS-price.DASH.EUR)/price.DASH.BBNS)*100) : (((price.DASH.BBNS-price.DASH.USD)/price.DASH.BBNS)*100) | number:2}}%)</span> <i class="ui mini label yellow horizontal">BITBNS</i></td>
+                <!--td></td-->
+            </tr>
         </tbody>
       </table>    
             <button class="ui primary button tiny" ng-disabled="btnDisabled" ng-click="updatePrice()">Refresh  <i class="icon refresh"></i></button>
