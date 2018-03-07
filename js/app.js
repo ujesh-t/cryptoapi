@@ -38,6 +38,29 @@ app.controller('ArbitrageController', function($scope, $http){
     
 });
 
+app.controller('DashboardController', function($scope, $http){
+        
+        $scope.currentNode = {};
+    
+        $scope.updatePrice = function() {
+            $scope.btnDisabled = true;  
+            $scope.coinList = [];    
+
+            $http.get('arbi.php').then(function(res){
+
+                $scope.dataList = res.data;
+                $scope.btnDisabled = false;          
+
+            });
+        }
+        
+        $scope.updateCurrentNode = function(details){
+            $scope.currentNode = details;
+        }
+        
+        $scope.updatePrice();
+});
+
 app.controller('CryptoController', function($scope, $http){
     
      
