@@ -54,7 +54,7 @@ foreach($bbnsJson as $bit) {
             $cexPairs = findPairsCex($coin, $qty-$dnf, $cexJson);
             foreach($cexPairs as $key => $value) {
                 foreach($bbnsJson as $b) {
-                    if($key == 'TRX') continue;
+                   // if($key == 'TRX') continue;
                     if(property_exists($b, $key)) {                      
                         $sellPrice = $value['QTY'] * $b->$key->sellPrice;
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
@@ -66,7 +66,7 @@ foreach($bbnsJson as $bit) {
             // binance
             $binancePair = findPairsBinance($coin, $qty-$dnf, $binanceJson);
             foreach($binancePair as $key => $value) {
-                if($key == 'TRX') continue;
+               // if($key == 'TRX') continue;
                 foreach($bbnsJson as $b) {
                     if(property_exists($b, $key)) {
                         $sellPrice = $value['QTY'] * $b->$key->sellPrice;
