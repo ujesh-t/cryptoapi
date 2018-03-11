@@ -45,13 +45,29 @@ app.controller('DashboardController', function($scope, $http){
     
         $scope.updatePrice = function(coin) {
             $scope.btnDisabled = true;  
-            $scope.coinList = [];  
+            $scope.maxList = [];  
 
             $http.get('arbi2.php').then(function(res){
 
                 $scope.dataList = res.data;
                 $scope.btnDisabled = false;          
                 $scope.currentNode = $scope.dataList[coin];
+                
+                angular.forEach($scope.dataList, function(currency, sym){
+                    var maxRoi = -999999;
+                    angular.forEach(currency, function(exchangeData, exchange){
+                        angular.forEach(exchangeData, function(d){
+                          if(d.ROI_PER > maxRoi) {
+                              maxRoi = d.ROI_PER;
+                              $scope.maxList[sym] = maxRoi;
+                              //maxList.currency = sym;
+                          } 
+                        });
+                    });
+                    //$scope.coinList.push(maxList);                
+                }, this);
+                
+                
             });
         }
         
