@@ -46,7 +46,7 @@
                     
                     <ul class="nav flex-column nav-pills" aria-orientation="vertical">
                       <li class="nav-item" ng-repeat="(coin, details) in dataList">
-                        <a class="nav-link" ng-class="{active: c===coin}" ng-click="updateCurrentNode(coin, details)" href="#">{{coin}} <span class="float-right badge  badge-light">{{maxList[coin]|number:2}}%</span></a>
+                        <a class="nav-link" ng-class="{active: c===coin}" ng-click="updateCurrentNode(coin, details)" href="#">{{coin}} <span ng-class="(maxList[coin]>=0)?'badge-success':'badge-warning'" class="float-right badge">{{maxList[coin]|number:2}}%</span></a>
                         
                       </li>
                     </ul>      
