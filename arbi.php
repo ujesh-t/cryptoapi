@@ -21,7 +21,7 @@ $clientBinance = new Client([
 
 
 
-$coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS');
+$coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS','TRX','RPX');
 
 $investment = 10000;
 $dnf = 0.002;
@@ -56,9 +56,10 @@ foreach($bbnsJson as $bit) {
                 foreach($bbnsJson as $b) {
                    // if($key == 'TRX') continue;
                     if(property_exists($b, $key)) {                      
-                        $sellPrice = $value['QTY'] * $b->$key->sellPrice;
+                        $sellPrice = $value['QTY'] * $b->$key->buyPrice;
+                        
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $cexData[$key] = array('INVESTED'=> $investment , 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $cexData[$key] = array('INVESTED'=> $investment , 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
                     }
                 }
             }
@@ -69,9 +70,9 @@ foreach($bbnsJson as $bit) {
                // if($key == 'TRX') continue;
                 foreach($bbnsJson as $b) {
                     if(property_exists($b, $key)) {
-                        $sellPrice = $value['QTY'] * $b->$key->sellPrice;
+                        $sellPrice = $value['QTY'] * $b->$key->buyPrice;
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->sellPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
                     }
                 }
             }            
