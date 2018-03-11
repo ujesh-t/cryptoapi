@@ -60,7 +60,7 @@
                             
                             <div class="list-group">
                               <a href="#" class="list-group-item list-group-item-action active">{{exchange}}</a>
-                              <a href="#" ng-repeat="p in priceList | orderBy:'-ROI_PER'" class="list-group-item list-group-item-action" ng-class="{'text-danger': p.ROI_PER < 0}"> {{p.ROI_PER | number:2}}% - {{p.COIN}}</a>
+                              <a href="#" ng-repeat="p in priceList | orderBy:'-ROI_PER'" class="list-group-item list-group-item-action" ng-class="(p.ROI_PER < 0)?'text-danger':'text-success'"> {{p.ROI_PER | number:2}}% - {{p.COIN}}</a>
                             </div>
                         </div>  
                     </div>                
