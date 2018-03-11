@@ -4,6 +4,12 @@ require 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
 
+$coin = null;
+
+if(isset($_GET['COIN'])) {
+    $coin=$GET_['COIN'];
+}
+
 
 $clientBbns = new Client([
     'base_uri' => 'https://bitbns.com/',
@@ -60,7 +66,8 @@ foreach($bbnsJson as $bit) {
                         $sellPrice = $value['QTY'] * $b->$key->buyPrice;
                         
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $cexData[$key] = array('INVESTED'=> $investment , 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $row = array('COIN'=> $key,'INVESTED'=> $investment , 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        array_push($cexData,$row);
                     }
                 }
             }
@@ -73,7 +80,8 @@ foreach($bbnsJson as $bit) {
                     if(property_exists($b, $key)) {
                         $sellPrice = $value['QTY'] * $b->$key->buyPrice;
                         $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
-                        $binanceData[$key] = array('INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        $row = array('COIN'=>$key,'INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        array_push($binanceData, $row);
                     }
                 }
             }        

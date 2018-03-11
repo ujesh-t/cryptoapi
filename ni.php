@@ -30,7 +30,7 @@
     </head>
 <body ng-app="cryptoApp">
     
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
   <a class="navbar-brand" href="#">Crpytoapi</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -40,25 +40,26 @@
   </div>
 </nav>
     
-    <div class="contianer" style="margin-top:90px;" ng-controller="DashboardController">
+    <div class="contianer" style="margin-top:5px;" ng-controller="DashboardController">
             <div class="row">
                 <div class="col-lg-2">
                     
                     <ul class="nav flex-column nav-pills" aria-orientation="vertical">
                       <li class="nav-item" ng-repeat="(coin, details) in dataList">
-                        <a class="nav-link" ng-click="updateCurrentNode(details)" href="#">{{coin}}</a>
+                        <a class="nav-link" ng-class="{active: c===coin}" ng-click="updateCurrentNode(coin, details)" href="#">{{coin}}</a>
                       </li>
                     </ul>      
                 </div>  
-                <div class="col-lg-10">
+                <div ng-show="btnDisabled" class="col-lg-10">
+                    <img class="rounded mx-auto d-block" src="images/spinner.gif"/>
+                </div>
+                <div ng-hide="btnDisabled" class="col-lg-10">
                     <div class="row">                        
                         <div class="col-lg-4" ng-repeat="(exchange, priceList) in currentNode">
                             
                             <div class="list-group">
-                              <a href="#" class="list-group-item list-group-item-action active">
-                                {{exchange}}
-                              </a>
-                              <a href="#" ng-repeat="(c, p) in priceList" class="list-group-item list-group-item-action">{{c}} <i class="icon rupee"></i> {{p.ROI_PER | number:2}}</a>
+                              <a href="#" class="list-group-item list-group-item-action active">{{exchange}}</a>
+                              <a href="#" ng-repeat="p in priceList | orderBy:'-ROI_PER'" class="list-group-item list-group-item-action" ng-class="{'text-danger': p.ROI_PER < 0}"> {{p.ROI_PER | number:2}}% - {{p.COIN}}</a>
                             </div>
                         </div>  
                     </div>                
@@ -66,6 +67,13 @@
         </div>                 
     </div>
     
+    <script>
+    $(document).on("click", ".nav-link", function() {
+        $(".nav-link").removeClass("active");
+        $(this).addClass("active"); 
+    });
+    
+    </script>
            
     </body>
 </html>
