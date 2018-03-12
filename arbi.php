@@ -22,7 +22,7 @@ $clientBinance = new Client([
 
 
 
-$coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS','TRX','RPX');
+$coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS','TRX','RPX','BCH');
 
 $investment = 10000;
 $dnf = 0.002;
