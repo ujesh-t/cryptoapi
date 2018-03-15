@@ -40,7 +40,7 @@
   </div>
 </nav>
     
-    <div class="contianer" style="margin-top:5px;" ng-controller="DashboardController">
+    <div class="container" style="margin-top:5px;" ng-controller="DashboardController">
             <div class="row">
                 <div class="col-lg-2">
                     

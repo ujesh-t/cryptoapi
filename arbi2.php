@@ -26,7 +26,10 @@ $clientBinance = new Client([
     'timeout' => 5.0    
 ]);
 
-
+$clientBittrex = new Client([
+    'base_uri' => 'https://bittrex.com/',
+    'timeout' => 5.0  
+]);
 
 $coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS','TRX','RPX','BCH','XMR','NEO','GAS', 'LTC');
 
@@ -45,6 +48,9 @@ $bbnsJson = json_decode($responseBbns->getBody());
 $responseBinance = $clientBinance->request('GET', '/api/v3/ticker/bookTicker');
 $binanceJson = json_decode($responseBinance->getBody());
 
+$responseBittrex = $clientBittrex->request('GET','/api/v1.1/public/getmarketsummaries');
+$bittrexJson = json_decode($responseBittrex->getBody());
+
 $output = array();
 
 foreach($bbnsJson as $bit) {
@@ -52,6 +58,7 @@ foreach($bbnsJson as $bit) {
         
         $cexData = array();
         $binanceData = array();
+        $bittrexData = array();
         
         if(property_exists($bit,$coin)) {
             $amt = ($investment - ($investment * $tradeFeeBns)/100);
@@ -86,12 +93,27 @@ foreach($bbnsJson as $bit) {
                 }
             }        
             
+            // bittrex
+            $bittrexPair = findPairsBittrex($coin, $qty-$dnf, $bittrexJson);
+            foreach($bittrexPair as $key => $value) {
+               // if($key == 'TRX') continue;
+                foreach($bbnsJson as $b) {
+                    if(property_exists($b, $key)) {
+                        $sellPrice = $value['QTY'] * $b->$key->buyPrice;
+                        $sellPrice = $sellPrice - (($sellPrice * $tradeFeeBns)/100);
+                        $row = array('COIN'=>$key,'INVESTED'=> $investment, 'RETURN'=>$sellPrice,'BOUGHT_AT'=>$value['PRICE_BTC'],'SOLD_AT'=>$b->$key->buyPrice, 'ROI_PER'=>(($sellPrice - $investment)/$investment)*100);        
+                        array_push($bittrexData, $row);
+                    }
+                }
+            }              
+            
             //$cexData = sortByRoi($cexData);
             //$binanceData = sortByRoi($binanceData);
             
             //$coinData = array();
             $output[$coin]['CEX'] = $cexData;
             $output[$coin]['BINANCE'] = $binanceData;
+            $output[$coin]['BITTREX'] = $bittrexData;
             
             //array_push($output, $coinData);
         }
@@ -167,4 +189,38 @@ function findPairsBinance($coin, $qty, $binanceJson){
 }
 
 
+function findPairsBittrex($coin, $qty, $bittrexJson) {
+    $tradeFeeBittrex = 0.16;
+    $btcAmt = 0;
+    $dnf = 0.002;
+    global $bbnsJson;
+
+    foreach($bittrexJson->result as $bin){
+        
+        if($bin->MarketName == "BTC"."-".$coin){
+            $bidPrice = $bin->Bid;
+            $soldAmount = $bidPrice * $qty;
+            $btcAmt = $soldAmount - (($soldAmount * $tradeFeeBin)/100);
+            break;            
+        }
+    }
+    
+    foreach($bbnsJson as $bit) {
+        $t = get_object_vars($bit);
+        foreach($t as $k => $v) {
+            //if($t == 'TRX') continue;
+            foreach($bittrexJson->result as $bin){
+                if($bin->MarketName == "BTC"."-".$k){
+                    $ask = $bin->Ask;
+                    $qtyBougth = ($btcAmt - (($btcAmt * $tradeFeeBin)/100))/$ask;
+                    $pairs[$k]['QTY']=$qtyBougth - $dnf;
+                    $pairs[$k]['PRICE_BTC']=$ask;
+                    break;
+                }
+            }
+        }
+    } 
+     return $pairs;
+   
+}
 
