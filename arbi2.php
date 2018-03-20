@@ -141,6 +141,7 @@ function findPairsCex($coin, $qty, $cexJson) {
     
     foreach($cexJson->data as $data) {
         $c = explode(":",$data->pair)[0];
+        if($c == 'DASH') continue;
         $ask = $data->ask;
         $qtyBougth = ($btcAmt - (($btcAmt * $tradeFeeCex)/100))/$ask;
         $pairs[$c]['QTY']=$qtyBougth - $dnf;
@@ -172,7 +173,7 @@ function findPairsBinance($coin, $qty, $binanceJson){
     foreach($bbnsJson as $bit) {
         $t = get_object_vars($bit);
         foreach($t as $k => $v) {
-            //if($t == 'TRX') continue;
+            if($t == 'DASH') continue;
             foreach($binanceJson as $bin){
                 if($bin->symbol == $k."BTC"){
                     $ask = $bin->askPrice;
@@ -208,7 +209,7 @@ function findPairsBittrex($coin, $qty, $bittrexJson) {
     foreach($bbnsJson as $bit) {
         $t = get_object_vars($bit);
         foreach($t as $k => $v) {
-            //if($t == 'TRX') continue;
+            if($t == 'DASH') continue;
             foreach($bittrexJson->result as $bin){
                 if($bin->MarketName == "BTC"."-".$k){
                     $ask = $bin->Ask;
