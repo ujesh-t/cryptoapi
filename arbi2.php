@@ -31,7 +31,7 @@ $clientBittrex = new Client([
     'timeout' => 5.0  
 ]);
 
-$coinsToWatch = array('XRP','XLM','ETH', 'DASH','NEO','GAS','TRX','RPX','BCH','XMR','NEO','GAS', 'LTC');
+$coinsToWatch = array('XRP','XLM','ETH','NEO','GAS','TRX','RPX','BCH','XMR','NEO','GAS', 'LTC','DOGE');
 
 $investment = 10000;
 $dnf = 0.002;
