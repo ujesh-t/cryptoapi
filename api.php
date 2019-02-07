@@ -25,13 +25,13 @@ $priceList = json_decode($priceApiR->getBody());
 $euCr = $priceList->rates->EUR;
 $usCr = $priceList->rates->USD;
     
-//$euCr = 1/$euCr;
+$euCr = 1/$euCr;
 $out['EUR'] = $euCr;
 
 if(!$reverse)
     $euCr = ((7.25*$euCr)/100)+$euCr;
 
-//$usCr = 1/$usCr;
+$usCr = 1/$usCr;
 $out['USD'] = $usCr;
 
 if(!$reverse)
