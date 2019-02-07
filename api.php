@@ -9,7 +9,7 @@ $usCr = 72;
 $out = array();
 
 $priceApi = new Client([
-    'base_uri' => 'http://data.fixer.io/api/',
+    'base_uri' => 'https://api.exchangeratesapi.io/',
     'timeout'  => 5.0,
 ]);
 
@@ -19,7 +19,7 @@ if(isset($_GET['reverse'])){
     $reverse = $_GET['reverse'];
 }
 
-$priceApiR = $priceApi->request('GET','/latest?base=INR&access_key=1bd48d3b47749f53fe0d1e38aad6e50a');
+$priceApiR = $priceApi->request('GET','/latest?base=INR');
 $priceList = json_decode($priceApiR->getBody());
 
 $euCr = $priceList->rates->EUR;
