@@ -3,13 +3,13 @@ require 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
 
-$euCr = 86.14;
-$usCr = 72;
+$euCr = 80.16;
+$usCr = 70.86;
 
 $out = array();
 
 $priceApi = new Client([
-    'base_uri' => 'https://api.exchangeratesapi.io/',
+    'base_uri' => 'https://api.exchangeratesapi.io',
     'timeout'  => 5.0,
 ]);
 
@@ -25,13 +25,13 @@ $priceList = json_decode($priceApiR->getBody());
 $euCr = $priceList->rates->EUR;
 $usCr = $priceList->rates->USD;
     
-$euCr = 1/$euCr;
+//$euCr = 1/$euCr;
 $out['EUR'] = $euCr;
 
 if(!$reverse)
     $euCr = ((7.25*$euCr)/100)+$euCr;
 
-$usCr = 1/$usCr;
+//$usCr = 1/$usCr;
 $out['USD'] = $usCr;
 
 if(!$reverse)
@@ -117,6 +117,7 @@ $out['XLM']['BBNS'] = $bbnsJson[5]->XLM->lastTradePrice;
 $out['DASH']['BBNS'] = $bbnsJson[10]->DASH->lastTradePrice;
 $out['BCH']['BBNS'] = $bbnsJson[12]->BCH->lastTradePrice;
 
+/*
 $clientZeb = new Client([
     'base_uri' => 'https://live.zebapi.com/',
     'timeout' => 5.0
@@ -124,7 +125,7 @@ $clientZeb = new Client([
 $responseZeb = $clientZeb->request('GET', '/api/v1/ticker?currencyCode=INR');
 $zebJson = json_decode($responseZeb->getBody());
 $out['BTC']['ZEBP'] = $zebJson->market;
-
+*/
 
 
 
